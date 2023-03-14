@@ -17,7 +17,7 @@ Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagin
 
 /*
 <div class="slide active">
-    <img src="./img/01.webp" alt="colosseo">
+    <img src="./img/01.webp" alt="img">
 </div>
 */
 
@@ -39,7 +39,7 @@ let slides = '';
 for (let i = 0; i < images.length; i++){
     slides += `
     <div class="slide">
-        <img src=" ${images[i]}" alt="roma-${i}">
+        <img src=" ${images[i]}" alt="img-${i}">
     </div>
     `;
 };
