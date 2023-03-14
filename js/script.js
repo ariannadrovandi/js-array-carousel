@@ -11,3 +11,67 @@ MILESTONE 3
 Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
 */
 
+
+
+/*
+<div class="slide active">
+    <img src="./img/01.webp" alt="colosseo">
+</div>
+*/
+
+const images = [
+    'img/01.webp',
+    'img/02.webp',
+    'img/03.webp',
+    'img/04.webp',
+    'img/05.webp'
+];
+const slider = document.querySelector('.slider');
+// console.log(slider);
+
+let currentIndex = 0; //variabile che tiene in memoria l'indice corrente
+
+let slides = '';
+
+// aggiungo le immagini
+for (let i = 0; i < images.length; i++){
+    slides += `
+    <div class="slide">
+        <img src=" ${images[i]}" alt="roma-${i}">
+    </div>
+    `;
+};
+// console.log(slides);
+slider.innerHTML += slides;
+document.querySelectorAll('.slide')[currentIndex].classList.add('active'); 
+
+const next = document.querySelector('.next');
+const prev = document.querySelector('.prev');
+// console.log(next, prev);
+
+// rimuovo active dall'immagine corrente e lo metto all'immagine successiva 
+next.addEventListener('click', goNext);
+
+function goNext() {
+    document.querySelectorAll('.slide')[currentIndex].classList.remove('active'); 
+    if (currentIndex === images.length -1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
+    };
+    document.querySelectorAll('.slide')[currentIndex].classList.add('active'); 
+};
+
+// rimuovo active dall'immagine corrente e lo metto all'immagine precedente
+prev.addEventListener('click', goPrev);
+
+function goPrev() {
+    document.querySelectorAll('.slide')[currentIndex].classList.remove('active'); 
+    if (currentIndex === 0) {
+        currentIndex = images.length -1;
+    } else {
+        currentIndex--;
+    };
+    document.querySelectorAll('.slide')[currentIndex].classList.add('active'); 
+};
+
